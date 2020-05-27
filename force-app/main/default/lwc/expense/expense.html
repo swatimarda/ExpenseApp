@@ -1,0 +1,56 @@
+<template>
+    <lightning-card title={cardTitle} icon-name="custom:custom85">
+
+        <template if:true={isPersonalSection}>
+            <!-- Default/basic -->
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-input type="text" label="First Name" placeholder="First Name..." onchange={handleFirstNameChange}></lightning-input>
+            </div>
+
+            <!-- Default/basic -->
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-input type="text" label="Last Name" placeholder="Last Name..." onchange={handleLasttNameChange}></lightning-input>
+            </div>
+
+            <!-- Default/basic -->
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-input type="text" label="Phone" placeholder="Phone..." onchange={handlePhoneChange}></lightning-input>
+            </div>
+
+            <lightning-button variant="brand" label="Next" title="Primary action" onclick={moveToExpenseSection} class="slds-m-left_x-small"></lightning-button>
+
+        </template>
+
+        <template if:true={isExpenseSection}>
+
+            <lightning-layout vertical-align="end" class="slds-m-top_medium">
+                <lightning-layout-item padding="around-small" flexibility="auto" size="2">
+                    <lightning-combobox
+                    value={selectedExpenseType}
+                    options={lastthreemonths}
+                    onchange={handleExpenseTypeChange}
+                    label="Month"></lightning-combobox>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" flexibility="auto" size="2">
+                    <lightning-combobox
+                    value={selectedExpenseType}
+                    options={expensetypes}
+                    onchange={handleExpenseTypeChange}
+                    label="Expense Type"></lightning-combobox>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" flexibility="auto" size="2">
+                    <lightning-input type="number" label="Amount" onchange={handlePhoneChange}></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" flexibility="auto" size="2">
+                    <lightning-button variant="brand" label="Add" title="Primary action" onclick={moveToPreviousSection} class="slds-m-left_x-small"></lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+
+            <div style="margin-top:50px">
+                <lightning-button variant="brand" label="Previous" title="Primary action" onclick={moveToPreviousSection} class="slds-m-left_x-small"></lightning-button>
+                <lightning-button variant="brand" label="Next" title="Primary action" onclick={moveToSummarySection} class="slds-m-left_x-small"></lightning-button>
+            </div>
+        </template>
+
+    </lightning-card>
+</template>
